@@ -1,0 +1,138 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title >首页</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  <ion-grid>
+    <ion-row align-items-center>
+        <ion-col col-2>
+            <button ion-button color="dark" clear full>
+               <img src="http://localhost:3000/img/icon/照片.png" alt="">
+            </button>
+        </ion-col>
+        <ion-col col-8>
+            <ion-searchbar placeholder="搜索商品"></ion-searchbar>
+        </ion-col>
+        <ion-col col-2>
+            <button ion-button color="dark" clear full>
+              <img src="http://localhost:3000/img/icon/消息.png" alt="">
+            </button>
+        </ion-col>
+    </ion-row>
+</ion-grid>
+<ion-slides *ngIf="mySlides" autoplay=3000 pager loop>
+     <ion-slide *ngFor="let item of mySlides;let i=index">
+          <img [src]="'http://localhost:3000/'+item.img" alt="">
+     </ion-slide>
+</ion-slides>
+<ion-grid>
+     <ion-row >
+         <ion-col >
+           <ion-card>
+              <div class="grid-item">
+                  <img src="http://localhost:3000/img/icon/搜索.png" alt="">
+                  <p class="gItem">搜索</p>
+              </div>
+           </ion-card>
+         </ion-col>
+         <ion-col >
+           <ion-card>
+              <div class="grid-item">
+                  <img src="http://localhost:3000/img/icon/蔬菜.png" alt="">
+                  <p class="gItem">蔬菜</p> 
+              </div>
+           </ion-card>
+         </ion-col>
+         <ion-col >
+            <ion-card>
+                <div class="grid-item">
+                    <img src="http://localhost:3000/img/icon/水果.png" alt="">
+                    <p class="gItem">水果</p> 
+                </div>
+            </ion-card>
+        </ion-col>
+     </ion-row>
+     <ion-row >
+        <ion-col >
+           <ion-card>
+              <div class="grid-item">
+                  <img src="http://localhost:3000/img/icon/超市.png" alt="">
+                  <p class="gItem">超市</p>
+              </div>
+           </ion-card>
+        </ion-col>
+        <ion-col >
+           <ion-card>
+                <div class="grid-item"> 
+                    <img src="http://localhost:3000/img/icon/优惠券.png" alt="">
+                    <p class="gItem">优惠券</p> 
+                </div>
+           </ion-card>
+        </ion-col>
+        <ion-col >
+            <ion-card>
+                <div class="grid-item"> 
+                    <p class="gItem">更多</p> 
+                </div>
+           </ion-card>
+       </ion-col>
+    </ion-row>
+</ion-grid>
+<!-- <ul class="grid">
+    <li class="grid-item">
+        <img src="http://localhost:3000/img/icon/搜索.png" alt="">
+        <p class="gItem">搜索</p>
+    </li>
+    <li class="grid-item">
+        <img src="http://localhost:3000/img/icon/蔬菜.png" alt="">
+        <p class="gItem">蔬菜</p>
+    </li>
+    <li class="grid-item">
+      <img src="http://localhost:3000/img/icon/水果.png" alt="">
+      <p class="gItem">水果</p>
+    </li>
+    <li class="grid-item">
+      <img src="http://localhost:3000/img/icon/超市.png" alt="">
+      <p class="gItem">超市</p>
+    </li>
+    <li class="grid-item">
+      <img src="http://localhost:3000/img/icon/优惠券.png" alt="">
+      <p class="gItem">优惠券</p>
+    </li>
+    <li class="grid-item">
+      <p class="gItem">更多</p>
+    </li>
+</ul> -->
+<div class="index_products" *ngIf="myF1Data">
+      <div class="index-title">
+            营养蔬菜
+      </div>
+      <div class="products">
+           <div class="product" *ngFor="let item of myF1Data;let i=index">
+                <div class="product-item">
+                    <img [src]="'http://localhost:3000/'+item.img_src" alt="">
+                    <p class="detail">{{item.title}}</p>
+                    <p class="price">
+                        <span class="new_price">￥{{item.new_price}}</span>
+                        <span class="old_price">￥{{item.old_price}}</span>
+                    </p>
+                </div>
+           </div>
+      </div>
+</div>
+<div class="index_products" >
+    <div class="index-title index-title1">
+          热情水果
+    </div>
+    <ion-list>
+         <ion-item>
+            <ion-thumbnail item-start>
+                <img src="http://localhost:3000/img/F1_product/南瓜1.png" alt="">
+            </ion-thumbnail>
+            
+         </ion-item>
+    </ion-list>
+</div>
+</ion-content>
