@@ -12,13 +12,18 @@ import {UserPage} from "../pages/user/user";
 import {DetailPage} from "../pages/detail/detail";
 import {SearchPage} from "../pages/search/search";
 import{RegisterPage} from "../pages/register/register";
+import{OrderPage} from "../pages/order/order";
+import { PayPage } from '../pages/pay/pay';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MyHttpServiceProvider } from '../providers/my-http-service/my-http-service';
 
+
 @NgModule({
   declarations: [
+    PayPage,
+    OrderPage,
     RegisterPage,
     SearchPage,
     DetailPage,
@@ -30,6 +35,8 @@ import { MyHttpServiceProvider } from '../providers/my-http-service/my-http-serv
     TabsPage
   ],
   entryComponents: [
+    PayPage,
+    OrderPage,
     RegisterPage,
     SearchPage,
     DetailPage,

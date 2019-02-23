@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-
 /**
- * Generated class for the RegisterPage page.
+ * Generated class for the OrderPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,23 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-register',
-  templateUrl: 'register.html',
+  selector: 'page-order',
+  templateUrl: 'order.html',
 })
-export class RegisterPage {
- uname="";
- upwd="";
- upwd1="";
- phone="";
+export class OrderPage {
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
-  }
-  // 注册信息
-  register(){
-
+    console.log('ionViewDidLoad OrderPage');
   }
 
 }

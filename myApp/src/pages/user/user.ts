@@ -19,10 +19,11 @@ import {RegisterPage} from "../register/register";
 })
 export class UserPage {
   register=RegisterPage;
-  isLogin=true;
+  isLogin=false;
   uname="";
   upwd="";
-  url="http://localhost:3000/login"
+  url="http://localhost:3000/login";
+  url1="http://localhost:3000/logout";
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private myHttpService:MyHttpServiceProvider,
     private toastCtl:ToastController,
@@ -35,13 +36,17 @@ export class UserPage {
   
   //登陆功能
   login(){
-      this.postRequest();
+      this.postRequest(this.url,{uname:this.uname,upwd:this.upwd},true);
+  }
+  // 退出登陆
+  logout(){
+      this.postRequest(this.url1,{uname:this.uname,upwd:this.upwd},false);
   }
   // 发送post请求
-  postRequest(){
-      this.myHttpService.SendPostRequest(this.url,{uname:this.uname,upwd:this.upwd},(result)=>{
+  postRequest(url,params,str){
+      this.myHttpService.SendPostRequest(url,params,(result)=>{
             if(result.code==1){
-                  this.isLogin=true;
+                  this.isLogin=str;
             }else{
                 var myToast= this.toastCtl.create({
                       message:result.msg,
