@@ -9,6 +9,8 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import {UserPage} from "../pages/user/user";
+import {DetailPage} from "../pages/detail/detail";
+import {SearchPage} from "../pages/search/search";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,6 +18,18 @@ import { MyHttpServiceProvider } from '../providers/my-http-service/my-http-serv
 
 @NgModule({
   declarations: [
+    SearchPage,
+    DetailPage,
+    UserPage,
+    MyApp,
+    AboutPage,
+    ContactPage,
+    HomePage,
+    TabsPage
+  ],
+  entryComponents: [
+    SearchPage,
+    DetailPage,
     UserPage,
     MyApp,
     AboutPage,
@@ -29,14 +43,7 @@ import { MyHttpServiceProvider } from '../providers/my-http-service/my-http-serv
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
-  entryComponents: [
-    UserPage,
-    MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
-  ],
+ 
   providers: [
     StatusBar,
     SplashScreen,

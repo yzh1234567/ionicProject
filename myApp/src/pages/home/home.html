@@ -5,6 +5,11 @@
 </ion-header>
 
 <ion-content >
+   <ion-refresher (ionRefresh)="refreshPage($event)">
+         <ion-refresher-content pullingText="让生活更健康" pullingIcon="circles" 
+          refreshingText="正在刷新..." refreshingSpinner="dots">
+         </ion-refresher-content>
+  </ion-refresher>
   <ion-grid>
     <ion-row align-items-center>
         <ion-col col-2>
@@ -31,7 +36,7 @@
      <ion-row >
          <ion-col >
            <ion-card>
-              <div class="grid-item">
+              <div class="grid-item" [navPush]="search">
                   <img src="http://localhost:3000/img/icon/搜索.png" alt="">
                   <p class="gItem">搜索</p>
               </div>
@@ -111,7 +116,7 @@
       </div>
       <div class="products">
            <div class="product" *ngFor="let item of myF1Data;let i=index">
-                <div class="product-item">
+                <div class="product-item" [navPush]="detail" [navParams]="{pid:item.pid}">
                     <img [src]="'http://localhost:3000/'+item.img_src" alt="">
                     <p class="detail">{{item.title}}</p>
                     <p class="price">
@@ -122,16 +127,22 @@
            </div>
       </div>
 </div>
-<div class="index_products" >
+<div class="index_products" *ngIf="myF2Data">
     <div class="index-title index-title1">
           热情水果
     </div>
     <ion-list>
-         <ion-item>
-            <ion-thumbnail item-start>
-                <img src="http://localhost:3000/img/F1_product/南瓜1.png" alt="">
+         <ion-item *ngFor="let tmp of myF2Data;let i=index" >
+            <ion-thumbnail item-start [navPush]="detail" [navParams]="{pid:tmp.pid}">
+                <img [src]="'http://localhost:3000/'+tmp.img_src" alt="">
             </ion-thumbnail>
-            
+            <div >
+                <p >{{tmp.title}}</p>
+                <p class="price">
+                    <span class="new_price">￥{{tmp.new_price}}</span>
+                </p>
+                
+            </div>
          </ion-item>
     </ion-list>
 </div>
