@@ -7,5 +7,64 @@
 </ion-header>
 
 <ion-content>
-    
+   <ion-refresher (iocRefresh)="refreshPage($envet)">
+       <ion-refresher-content pullingText="coobar让生活更健康" pullingIcon="circles">
+       </ion-refresher-content>
+   </ion-refresher> 
+   <div class="cart">
+        <div class="cart-title">
+             <ion-checkbox color="danger"></ion-checkbox>
+             <span>coobar专卖</span>
+        </div>
+        <ion-list>
+             <ion-item-sliding>
+                <ion-checkbox></ion-checkbox>
+                <ion-item>
+                    
+                    <ion-thumbnail item-start>
+                        <img src="http://localhost:3000/img/F1_product/南瓜1.jpg" alt="">
+                    </ion-thumbnail>
+                    <div item-start class="cart-item">
+                        <p text-wrap calss="detail" >123142444214342515515515151553515325252553253253</p>
+                        <p class="other"></p>
+                        <div class="count-price">
+                             <span price></span>
+                             <button ion-button color="light">-</button>
+                             <span>1</span>
+                             <button ion-button color="light">+</button>
+                        </div>  
+                    </div>
+                                
+                </ion-item>             
+                <ion-item-options>
+                          <button ion-button color="danger">
+                               <ion-icon name="trash"></ion-icon>
+                               删除
+                          </button>
+                </ion-item-options>
+             </ion-item-sliding>
+        </ion-list>
+   </div>
+   <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+         <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="加载更多...">
+         </ion-infinite-scroll-content>
+   </ion-infinite-scroll>
 </ion-content>
+
+<ion-footer>
+    <ion-grid>
+          <ion-row align-items-center>
+                <ion-col col-3 align-self-center>
+                      <ion-checkbox color="danger"></ion-checkbox>
+                      <span>全选</span>
+                </ion-col>
+                <ion-col col-3>
+                    <span>合计:</span>
+                    <span>￥</span>
+                </ion-col>
+                <ion-col>
+                    <button ion-button color="danger" full >结算</button>
+                </ion-col>
+          </ion-row>
+    </ion-grid>
+</ion-footer>

@@ -1,3 +1,30 @@
 page-user {
-
+     
+    .login,.order-pay{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+      .login{
+          padding-top:7rem;
+      }
+      .user-avatar{
+          width:120px;
+          border-radius:50%;
+      }
+      .user-msg{
+          background:#f1f1f1;
+      }
+      .my-list{
+          display:flex;
+          justify-content: space-between;
+          align-items: center;
+          background:#fff;
+          padding:4px;
+      }
+      .order-pay{
+          padding:3px;
+      }
+      
 }

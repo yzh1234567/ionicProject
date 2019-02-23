@@ -6,8 +6,8 @@
 
 <ion-content >
    <ion-refresher (ionRefresh)="refreshPage($event)">
-         <ion-refresher-content pullingText="让生活更健康" pullingIcon="circles" 
-          refreshingText="正在刷新..." refreshingSpinner="dots">
+         <ion-refresher-content pullingText="coobar让生活更健康" pullingIcon="circles" 
+          refreshingText="coobar让生活更健康">
          </ion-refresher-content>
   </ion-refresher>
   <ion-grid>
@@ -18,7 +18,7 @@
             </button>
         </ion-col>
         <ion-col col-8>
-            <ion-searchbar placeholder="搜索商品"></ion-searchbar>
+            <ion-searchbar placeholder="搜索商品" [navPush]="search"></ion-searchbar>
         </ion-col>
         <ion-col col-2>
             <button ion-button color="dark" clear full>
@@ -79,6 +79,7 @@
         <ion-col >
             <ion-card>
                 <div class="grid-item"> 
+                        <img src="http://localhost:3000/img/icon/更多.png" alt="">
                     <p class="gItem">更多</p> 
                 </div>
            </ion-card>

@@ -6,10 +6,63 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>user</ion-title>
+    <ion-title>用户中心</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content >
+        <div class="login" *ngIf="isLogin==false" padding>
+            <img src="http://localhost:3000/img/index-header/logo.jpg" alt="" class="user-avatar">
+            <ion-item>
+                <ion-label color="dark">账号:</ion-label>
+                <ion-input placeholder="用户名/手机号码" [(ngModel)]="uname"></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-label color="dark">密码:</ion-label>
+                  <ion-input placeholder="请输入密码" type="password" [(ngModel)]="upwd"></ion-input>
+              </ion-item>
+              <ion-grid >
+                  <ion-row justify-content-between>
+                      <ion-col >
+                           <button ion-button color="danger" clear>忘记密码</button>
+                      </ion-col>
+                      <ion-col text-right>
+                          <button ion-button color="secondary" clear text-right [navPush]="register">免费注册</button>
+                     </ion-col>
+                  </ion-row>
+            </ion-grid>
+              <button ion-button color="danger" full  (click)="login()">登陆</button>
+        </div>
+        <div class="user-msg" >
+            <ion-list>
+                <ion-item>
+                    <ion-avatar item-start>
+                          <img src="http://localhost:3000/img/index-header/logo.jpg" alt="">
+                    </ion-avatar>
+                    <p>一条金鱼</p>
+                </ion-item>
+            </ion-list>
+            <div class="my-list">
+                <div class="order-pay">
+                    <img src="http://localhost:3000/img/icon/待付款.png" alt="">
+                     <span>待付款</span>
+                </div>
+                <div class="order-pay">
+                    <img src="http://localhost:3000/img/icon/待收货.png" alt="">
+                    <span>待收货</span>
+                </div>
+                <div class="order-pay">
+                    <img src="http://localhost:3000/img/icon/待评价.png" alt="">
+                    <span>待评价</span>
+                </div>
+                <div class="order-pay">
+                    <img src="http://localhost:3000/img/icon/退换货.png" alt="">
+                    <span>退换货</span>
+                </div>
+                <div class="order-pay">
+                    <img src="http://localhost:3000/img/icon/我的订单.png" alt="">
+                    <span>我的订单</span>
+                </div> 
+            </div>
+        </div>
 </ion-content>
