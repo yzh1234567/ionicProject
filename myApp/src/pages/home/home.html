@@ -35,7 +35,7 @@
 <ion-grid>
      <ion-row >
          <ion-col >
-           <ion-card>
+           <ion-card >
               <div class="grid-item" [navPush]="search">
                   <img src="http://localhost:3000/img/icon/搜索.png" alt="">
                   <p class="gItem">搜索</p>
@@ -133,12 +133,12 @@
           热情水果
     </div>
     <ion-list>
-         <ion-item *ngFor="let tmp of myF2Data;let i=index" >
+         <ion-item *ngFor="let tmp of myF2Data;let i=index" [navPush]="detail" [navParams]="{pid:tmp.pid}">
             <ion-thumbnail item-start [navPush]="detail" [navParams]="{pid:tmp.pid}">
                 <img [src]="'http://localhost:3000/'+tmp.img_src" alt="">
             </ion-thumbnail>
-            <div >
-                <p >{{tmp.title}}</p>
+            <div class="product-item">
+                <p class="detail">{{tmp.title}}</p>
                 <p class="price">
                     <span class="new_price">￥{{tmp.new_price}}</span>
                 </p>

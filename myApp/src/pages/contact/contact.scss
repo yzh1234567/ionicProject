@@ -1,3 +1,75 @@
 page-contact {
-
+    $color:#f70738;
+    *{
+        box-sizing:border-box;
+    }
+    .item-block{
+       border-bottom:1px solid #ddd;
+    }
+    .item-cover{
+        width:10px;
+    }
+    .cart>.cartBlank{
+        width:100%;
+        text-align: center;
+        padding:20px 0 0 0;
+        font-size:24px;
+        color:$color;
+    }
+    .cart-title,.cart-item,.count-price,.count{
+        display:flex;
+        
+    }
+    .cart-title{
+        padding:6px ;
+        background:#ddd;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .cart-title>.sell{
+        padding:0 0 0 10px;
+    }
+    .cart-item{
+        flex-direction: column;
+        justify-content: center;
+        padding:6px 6px 6px 0;
+        width:66%;
+    }
+    .cart-item .detail{
+        margin:0;
+        padding:3px 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        //-webkit-line-clamp:2;只有safari内核扩展的css样式
+         white-space: nowrap;
+        
+    }
+    .count-price{
+        justify-content: space-between;
+        padding:0 6px;
+    }
+    .count-price>.price{
+        color:$color;
+    }
+    .count{
+        justify-content: center;
+        align-items: center;
+    }
+    .count-item2{
+        width:40px;
+        text-align: center;
+        border:1px solid #f1f1f1;
+        // border-bottom:1px solid #f1f1f1;
+    }
+    .allSelect{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .sum{
+        font-size:12px;
+    }
+    .sumMoney{
+        color:$color;
+    }
 }

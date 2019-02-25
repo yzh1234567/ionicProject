@@ -11,34 +11,44 @@ page-about {
         border-bottom:1px solid #f1f1f1;
         padding:0 6px;
         margin:10px 0;
+        
     }
     .msg-item{
         display:flex;
         padding:6px 0;
+        justify-content: space-between;
+        border-bottom:1px solid #eee;
     }
-    .msg-item>img{
-        width:60px;
-        height:60px;
+    .msg-item>item{
+        width:20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .msg-item>.item>img{
+        width:5rem;
+        height:5rem;
         border-radius: 8px;
     }
     .msg-content{
-        dispaly:flex;
+        display:flex;
         flex-direction: column;
         justify-content: center;
-        margin:0 0 0 20px;
+        width:80%;
     }
     .content{
         margin:0;
-        padding:3px;
+        padding:3px 6px;
         font-size:16px;
-       
     }
     .content1{
         display:flex;
         justify-content: space-between;
     }
     .content2{
-        
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
     }
-
+    
 }

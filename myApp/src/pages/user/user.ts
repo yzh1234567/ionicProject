@@ -47,6 +47,7 @@ export class UserPage {
       this.myHttpService.SendPostRequest(url,params,(result)=>{
             if(result.code==1){
                   this.isLogin=str;
+                  this.upwd="";
             }else{
                 var myToast= this.toastCtl.create({
                       message:result.msg,

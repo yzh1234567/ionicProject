@@ -9,6 +9,7 @@ var app=express();
     app.listen(3000);
 // 使用第三方模块
 app.use(express.static("public"));
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended:false,
 }));

@@ -9,7 +9,6 @@ var router=express.Router();
 
        var uname=req.body.uname;
        var upwd=req.body.upwd;
-       console.log(uname,upwd,req.body);
     //    验证用户名，密码;
     var regUname=/^\w{6,12}$/g;
     var regUpwd=/^\w{8,20}$/g;
@@ -52,12 +51,12 @@ router.post("/logout",(req,res)=>{
     var uname=req.body.uname;
     var upwd=req.body.upwd;
     // sql语句
-    var sql="select uid from coobar_user where uname=? or phone=? and upwd=md5(?)";
-    pool.query(sql,[uname,upwd],(err,result)=>{
+    var sql="select uid from coobar_user where uname= ? or phone= ? and upwd=md5(?)";
+    pool.query(sql,[uname,uname,upwd],(err,result)=>{
         if(err) throw err;
         if(result.length>0){
             req.session.uid=undefined;
-            res.send({code:200,msg:"退出登陆成功"})
+            res.send({code:1,msg:"退出登陆成功"})
         }else{
             res.send({code:-1,msg:"退出登陆失败"})
         }
@@ -261,6 +260,7 @@ router.get("/addCart",(req,res)=>{
         return;
     };
     // sql语句
+       
        var sql="insert into coobar_cart (cid,uid,pid,count) values (null,?,?,?)";
        pool.query(sql,[uid,pid,count],(err,result)=>{
             if(err) throw err;
@@ -274,20 +274,52 @@ router.get("/addCart",(req,res)=>{
 // 功能9 ，查询购物车
 router.get("/queryCart",(req,res)=>{
     var uid=req.session.uid;
+    var pno=req.query.pno;
+    var pageSize=req.query.pageSize;
+    var progress=0 , data={}, pageCount=0;
+    // 判断 pno 是否存在
+    if(pno==undefined){
+        pno=1;
+    }else{
+        pno=parseInt(req.query.pno);
+    };
+    if(pageSize==undefined){
+        pageSize=5;
+    }else{
+        pageSize=parseInt(req.query.pageSize);
+    };
     if(uid==undefined){
         res.send({code:-1,msg:"请先登录"});
         return;
     };
-    // sql语句
-    var sql="select p.title,p.old_price,p.new_price,p.img_src,c.count,c.cid from coobar_cart c ,coobar_products p where p.id=c.pid and uid=?";
-    pool.query(sql,[uid],(err,result)=>{
+    // sql语句查询当前页购物车的内容
+    var offset=(pno-1)*pageSize;
+    var sql="select p.title,p.old_price,p.new_price,p.img_src,c.count,c.cid from coobar_cart c ,coobar_products p where p.id=c.pid and uid=? limit ?,? ";
+    pool.query(sql,[uid,offset,pageSize],(err,result)=>{
         if(err) throw err;
         if(result.length>0){
-            res.send({code:1,msg:result})
+            progress+=50;
+            data.data=result;
+            if(progress>=100){
+                res.send({code:1,msg:data});
+            }
         }else{
-            res.send({code:-2,msg:"加入购物车失败"})
+            res.send({code:-2,msg:"查询购物车失败"})
         }
     })
+    // sql语句查询总页码
+        var sql1="select count(cid) from coobar_cart where uid=?";
+        pool.query(sql1,[uid],(err,result)=>{
+            if(err) throw err;
+            if(result.length>0){
+                progress+=50;
+                pageCount=Math.ceil(result[0]["count(cid)"]/pageSize);
+                data.pageCount=pageCount;
+                if(progress>=100){
+                    res.send({code:1,msg:data})
+                }
+            }
+        })
 });
 // 更新购物车
 router.get("/updateCart",(req,res)=>{

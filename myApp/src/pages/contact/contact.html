@@ -7,37 +7,38 @@
 </ion-header>
 
 <ion-content>
-   <ion-refresher (iocRefresh)="refreshPage($envet)">
-       <ion-refresher-content pullingText="coobar让生活更健康" pullingIcon="circles">
+   <ion-refresher (ionRefresh)="refreshPage($event)">
+       <ion-refresher-content pullingText="coobar让生活更健康" pullingIcon="circles" refreshingText="coobar让生活更健康">
        </ion-refresher-content>
    </ion-refresher> 
-   <div class="cart">
+   <div class="cart" *ngIf="cart">
         <div class="cart-title">
-             <ion-checkbox color="danger"></ion-checkbox>
-             <span>coobar专卖</span>
+             <ion-checkbox color="danger" [(ngModel)]="isAllSelected" (ngModelChange)="myAllSelect()"></ion-checkbox>
+             <span class="sell">coobar专卖</span>
         </div>
-        <ion-list>
-             <ion-item-sliding>
-                <ion-checkbox></ion-checkbox>
+        <ion-list >
+             <ion-item-sliding *ngFor="let item of cart ;let i=index">
                 <ion-item>
-                    
+                        <ion-checkbox color="danger" item-start [(ngModel)]="item.isSelected" 
+                        (ngModelChange)="mySelect()"></ion-checkbox>
                     <ion-thumbnail item-start>
-                        <img src="http://localhost:3000/img/F1_product/南瓜1.jpg" alt="">
+                        <img [src]="'http://localhost:3000/'+item.img_src" alt="">
                     </ion-thumbnail>
                     <div item-start class="cart-item">
-                        <p text-wrap calss="detail" >123142444214342515515515151553515325252553253253</p>
+                        <p  class="detail" >{{item.title}}</p>
                         <p class="other"></p>
                         <div class="count-price">
-                             <span price></span>
-                             <button ion-button color="light">-</button>
-                             <span>1</span>
-                             <button ion-button color="light">+</button>
+                             <span class="price">￥{{item.new_price}}</span>
+                             <div class="count" >
+                                    <button ion-button color="light" (click)="productCount(i,-1)">-</button>
+                                    <span class="count-item2">{{item.count}}</span>
+                                    <button ion-button color="light" (click)="productCount(i,1)">+</button>
+                             </div>
                         </div>  
-                    </div>
-                                
+                    </div>           
                 </ion-item>             
                 <ion-item-options>
-                          <button ion-button color="danger">
+                          <button ion-button color="danger" (click)="deleteProduct(i)">
                                <ion-icon name="trash"></ion-icon>
                                删除
                           </button>
@@ -45,25 +46,31 @@
              </ion-item-sliding>
         </ion-list>
    </div>
+   <div class="cart" *ngIf="cart.length==0">
+        <div class="cartBlank">购物车空空如也</div>
+   </div>
    <ion-infinite-scroll (ionInfinite)="loadMore($event)">
          <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="加载更多...">
          </ion-infinite-scroll-content>
    </ion-infinite-scroll>
 </ion-content>
 
-<ion-footer>
+<ion-footer *ngIf="cart">
     <ion-grid>
           <ion-row align-items-center>
-                <ion-col col-3 align-self-center>
-                      <ion-checkbox color="danger"></ion-checkbox>
-                      <span>全选</span>
+                <ion-col col-2 align-self-center >
+                    <div class="allSelect">
+                            <ion-checkbox color="danger"[(ngModel)]="isAllSelected" 
+                            (ngModelChange)="myAllSelect()"></ion-checkbox>
+                            <span>全选</span>
+                    </div>
                 </ion-col>
-                <ion-col col-3>
-                    <span>合计:</span>
-                    <span>￥</span>
+                <ion-col col-4>
+                    <span class="sum">合计:</span>
+                    <span class="sumMoney">￥{{calcSum()}}</span>
                 </ion-col>
                 <ion-col>
-                    <button ion-button color="danger" full >结算</button>
+                    <button ion-button color="danger" full (click)="myPay()">结算</button>
                 </ion-col>
           </ion-row>
     </ion-grid>

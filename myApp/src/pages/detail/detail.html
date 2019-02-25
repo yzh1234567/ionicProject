@@ -11,26 +11,64 @@
 </ion-header>
 
 <ion-content>
-       <ion-slides pager loop  *ngIf="detailData" class="mySlides">
-           <ion-slide *ngFor="let item of detailData.pics">
-                <img [src]="'http://localhost:3000/'+item.img_md" alt="">
-           </ion-slide>
-       </ion-slides>
-       
+    <div class="top">
+        <div [class]="item.myActive" (click)="myLocation(i)" *ngFor="let item of myTopData;let i=index">
+            <button ion-button [color]="item.myColor" clear >
+                <ion-icon [name]="item.myName"></ion-icon>
+                {{item.title}}
+            </button>
+        </div>
+    </div>
+    <div class="product" *ngIf="myShow[0].show">
+          <ion-slides pager loop  *ngIf="detailData" class="mySlides">
+              <ion-slide *ngFor="let item of detailData.pics">
+                   <img [src]="'http://localhost:3000/'+item.img_md" alt="">
+              </ion-slide>
+          </ion-slides>
+          <ion-grid>
+             <ion-row align-items-center>
+                  <ion-col col-10>
+                     <span>新疆板栗南瓜</span>
+                  </ion-col>
+                  <ion-col col-2>
+                      <div  [class]="myHeart" (click)="myAttention()">
+                          <p class="heart">
+                              <ion-icon name="heart"></ion-icon>
+                          </p>
+                          <span>关注</span>
+                      </div>
+                  </ion-col>
+             </ion-row>
+        </ion-grid>
+        <div class="blank"></div>
+        <div class="product-detail">
+            <div class="detail-top">
+                <div class="dt-item dt-item1" >商品介绍</div>
+                <div class="dt-item">规格参数</div>
+                <div class="dt-item">售后保障</div>
+            </div>
+             <img src="http://localhost:3000/img/produc_details/product_details1/long-picture/20180914061402870.jpg" alt="">    
+           </div>
+    </div>
+    <div class="product-detail" *ngIf="myShow[1].show">
+     <div class="detail-top">
+         <div class="dt-item dt-item1" >商品介绍</div>
+         <div class="dt-item">规格参数</div>
+         <div class="dt-item">售后保障</div>
+     </div>
+      <img src="http://localhost:3000/img/produc_details/product_details1/long-picture/20180914061402870.jpg" alt="">    
+    </div>
+    <div class="comment" *ngIf="myShow[2].show">
+         <div>
+             正在加紧制作中...
+         </div>
+    </div>
+    <div class="introduce" *ngIf="myShow[3].show">
+        <div>
+            正在加紧制作中...
+        </div>
+    </div>
 </ion-content>
-<ion-grid>
-     <ion-row>
-          <ion-col col-10>
-             <span>新疆板栗南瓜</span>
-          </ion-col>
-          <ion-col col-2>
-               <button ion-button clear color="dark">
-                 <ion-icon name="heart"></ion-icon>
-                 关注
-               </button>
-          </ion-col>
-     </ion-row>
-</ion-grid>
 <ion-footer>
      <ion-grid>
          <ion-row >
