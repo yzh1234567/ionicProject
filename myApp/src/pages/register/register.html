@@ -11,29 +11,28 @@
 </ion-header>
 
 <ion-content padding>
-    <div class="register" >
-        <ion-item>
-            <ion-label color="dark">用户名:</ion-label>
-            <ion-input placeholder="请输入用户名" [(ngModel)]="uname"></ion-input>
-          </ion-item>
-          <div>
-              <span>
-                <ion-icon name="help"></ion-icon>
-                用户名由字母/数字/标点符号/汉字组成的6-12位字符
-              </span>
-          </div>
-          <ion-item>
-              <ion-label color="dark">密码:</ion-label>
-              <ion-input placeholder="请输入密码" type="password" [(ngModel)]="upwd"></ion-input>
-          </ion-item>
-          <ion-item>
-              <ion-label color="dark">确认密码:</ion-label>
-              <ion-input placeholder="请确认密码" type="password" [(ngModel)]="upwd1"></ion-input>
-          </ion-item>
+    <div class="register" *ngIf="isShow==false">
           <ion-item>
               <ion-label color="dark">手机号码:</ion-label>
-              <ion-input placeholder="请手机号码"  [(ngModel)]="phone"></ion-input>
+              <ion-input placeholder="请手机号码"  [(ngModel)]="phone" (blur)="phoneBlur()" (ngModelChange)="phoneChange()"></ion-input>
           </ion-item>
-          <button ion-button color="danger" full (click)="register()" margin>注册</button>
+          <ion-item>
+            <ion-label color="dark">用户名:</ion-label>
+            <ion-input placeholder="请输入用户名" [(ngModel)]="uname" (blur)="unameBlur()" (ngModelChange)="unameChange()"></ion-input>
+          </ion-item>
+          <button ion-button color="danger" full (click)="next()" margin [disabled]="btnDisabled(testPhone,testUname)">下一步</button>
+    </div>
+    <div class="register" *ngIf="isShow">
+        <ion-item>
+            <ion-label color="dark">密码:</ion-label>
+            <ion-input placeholder="请输入密码" type="password" [(ngModel)]="upwd" (ngModelChange)="upwdChange()" 
+            (blur)="upwdBlur()"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="dark">确认密码:</ion-label>
+            <ion-input placeholder="请确认密码" type="password" [(ngModel)]="upwd1" (ngModelChange)="upwd1Change()" 
+            (blur)="upwd1Blur()"></ion-input>
+        </ion-item>
+        <button ion-button color="danger" full (click)="register()" margin [disabled]="btnDisabled(testUpwd,testUpwd1)">注册</button>
     </div>
 </ion-content>

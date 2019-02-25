@@ -1,3 +1,44 @@
 page-about {
+    *{
+        box-sizing:border-box;
+    }
+    .container{
+        background:#ddd;
+        height:100%;
+    }
+    .msg{
+        border-top:1px solid #f1f1f1;
+        border-bottom:1px solid #f1f1f1;
+        padding:0 6px;
+        margin:10px 0;
+    }
+    .msg-item{
+        display:flex;
+        padding:6px 0;
+    }
+    .msg-item>img{
+        width:60px;
+        height:60px;
+        border-radius: 8px;
+    }
+    .msg-content{
+        dispaly:flex;
+        flex-direction: column;
+        justify-content: center;
+        margin:0 0 0 20px;
+    }
+    .content{
+        margin:0;
+        padding:3px;
+        font-size:16px;
+       
+    }
+    .content1{
+        display:flex;
+        justify-content: space-between;
+    }
+    .content2{
+        
+    }
 
 }

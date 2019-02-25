@@ -327,7 +327,7 @@ router.get("/deleteCart",(req,res)=>{
     });
 // 删除购物车所有商品
 });
-// 查询商品详情
+// 功能13 查询商品详情
 router.get("/productDetail",(req,res)=>{
     var pid=req.query.pid;
     var obj={},progress=0;
