@@ -121,8 +121,8 @@
                     <img [src]="'http://localhost:3000/'+item.img_src" alt="">
                     <p class="detail">{{item.title}}</p>
                     <p class="price">
-                        <span class="new_price">￥{{item.new_price}}</span>
-                        <span class="old_price">￥{{item.old_price}}</span>
+                        <span class="new_price">￥{{item.new_price|number:".2"}}</span>
+                        <span class="old_price">￥{{item.old_price|number:".2"}}</span>
                     </p>
                 </div>
            </div>
@@ -140,7 +140,7 @@
             <div class="product-item">
                 <p class="detail">{{tmp.title}}</p>
                 <p class="price">
-                    <span class="new_price">￥{{tmp.new_price}}</span>
+                    <span class="new_price">￥{{tmp.new_price|number:".2"}}</span>
                 </p>
                 
             </div>

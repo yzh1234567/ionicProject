@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ActionSheetController,ToastController } from 'ionic-angular';
 
 
 import {ContactPage} from "../contact/contact";
@@ -21,6 +21,7 @@ export class DetailPage {
   cart=ContactPage; 
   url="http://localhost:3000/productDetail";
   detailData=[];
+  details={};
   myShow=[
     {show:true},
     {show:false},
@@ -54,16 +55,20 @@ export class DetailPage {
     }
   ];
   myHeart="attention";
+  pid=1;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private myHttpService:MyHttpServiceProvider,
     private actionSheetCtrl:ActionSheetController,
+    private toastCtrl:ToastController
     ) {
   }
 
   ionViewDidLoad() {
-       this.getRequest(this.url);
+      this.pid=this.navParams.data.pid ;
   }
-
+  ionViewWillEnter(){
+      this.getRequest(this.url);
+  }
   //  分享事件
   share(){
          var myAction=this.actionSheetCtrl.create({
@@ -88,6 +93,8 @@ export class DetailPage {
       this.myHttpService.SendGetRequest(url,(result:any)=>{
              if(result.code==1){
                   this.detailData=result.msg;
+                  this.details=result.msg.details[0];
+                  console.log(this.details)
              }
       })
   }
@@ -122,4 +129,32 @@ export class DetailPage {
         this.myHeart="attention";
      }
   }
+  // 添加购物车
+   addCart(){
+      var count= this.details["count"];
+      var url="http://localhost:3000/addCart?pid="+this.pid+"&count="+count;
+      this.myHttpService.SendGetRequest(url,(result:any)=>{
+            if(result.code==1){
+                    var myToast=this.toastCtrl.create({
+                          message:result.msg,
+                          duration:2000,
+                          cssClass:"background-color: #f00"
+                    });
+                    myToast.present();
+            }else if(result.code==-1){
+              var myToast=this.toastCtrl.create({
+                message:result.msg,
+                duration:2000,
+                cssClass:"background-color:#f00 "
+                });
+                myToast.present();
+            }
+      })
+   }
+  //  购买商品的数量
+    buyCount(e){
+       var count=parseInt(this.details["count"]);
+       count+=e;
+       this.details["count"]=count;
+    }
 }

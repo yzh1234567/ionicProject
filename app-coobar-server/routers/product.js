@@ -381,7 +381,7 @@ router.get("/productDetail",(req,res)=>{
         };
     });
     // sql语句2
-    var sql2="select p.old_price,p.new_price from coobar_products p where id=?";
+    var sql2="select p.old_price,p.new_price ,p.count from coobar_products p where id=?";
     pool.query(sql2,[pid],(err,result)=>{
         if(err) throw err;
         if(result.length>0){

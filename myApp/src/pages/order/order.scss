@@ -1,3 +1,100 @@
 page-order {
-
+    $background:#ddd;
+    $color:#f70738;
+    *{
+        box-sizing:border-box;
+        margin:0;
+        padding:0;
+    }
+    .blank{
+        height:8px;
+        background:$background;
+    }
+     .order-top{
+             padding:4px 8px;
+             justify-content: space-between;
+     }
+     .order-top,.user-msg,.user,.address{
+         display:flex;
+         align-items: center;
+         width:100%;
+     }
+     .user-msg{
+         flex-direction: column;
+         justify-content: center;
+         width:90%;
+     }
+     .order-icon{
+         width:10%;
+         text-align: center;
+     }
+     .user{
+         justify-content:space-around;
+         padding:4px 0;
+     }
+     .user>.user-item{
+         font-size:16px;
+     }
+     .address{
+         justify-content: flex-start;
+         padding:4px;
+     }
+     .address .addr-item{
+         padding:0 0 0 12px;
+         font-size:12px;
+         overflow: hidden;
+         white-space: nowrap;
+         text-overflow: ellipsis;
+     }
+     .order-products{
+         display:flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         padding:8px;
+         border-top:2px solid $background;
+         border-bottom:2px solid $background;
+     }
+     .order-products .product{
+             display: flex;
+             justify-content: flex-start;
+             align-items: center;
+             width:100%;
+             border-bottom:1px solid $background;
+             padding:4px 0;
+     }
+     .product-item1{
+         width:18%;
+     }
+     .product-item2{
+         width:82%;
+         display: flex;
+         display:flex;
+         flex-direction: column;
+         justify-content: flex-start;
+         padding:0 0 0 16px;
+     }
+     .product-item2 .detail{
+         padding:4px 0;
+         overflow: hidden;
+         white-space: nowrap;
+         text-overflow: ellipsis;
+     }
+     .product-item2  .price-count{
+         padding:4px 0;
+         display:flex;
+         justify-content: space-between;
+     }
+     .order-bottom{
+         display: flex;
+         align-items: center;
+     }
+     .order-money{
+         width:67%;
+         color:$color;
+         text-align: center;
+     }
+     .order-submit{
+         width:33%；
+     }
 }

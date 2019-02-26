@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController ,ToastController} from 'ionic-angular';
+import { NavController ,ToastController,AlertController} from 'ionic-angular';
 import { MyHttpServiceProvider } from '../../providers/my-http-service/my-http-service';
 
-import{UserPage} from "../user/user";
 import{OrderPage} from "../order/order" ;
 
 @Component({
@@ -18,7 +17,8 @@ export class ContactPage {
   isAllSelected=false;
   constructor(public navCtrl: NavController,
     private myHttpService:MyHttpServiceProvider,
-    private toastCtrl:ToastController
+    private toastCtrl:ToastController,
+    private alertCtrl:AlertController
     ) {
          
   }
@@ -41,7 +41,7 @@ export class ContactPage {
                      position:"middle",
                });
                setTimeout(()=>{
-                   this.navCtrl.push(UserPage);
+                   this.navCtrl.parent.select(3);
                    myToast.dismiss();
                },3000)
                myToast.present();
@@ -138,9 +138,29 @@ export class ContactPage {
     }
     // 删除指定的商品
     deleteProduct(i){
-        var cid=this.cart[i].cid;
-        var url="http://localhost:3000/deleteCart?cid="+cid;
-        this.myHttpService.SendGetRequest(url,(result:any)=>{
-        })
+        var myAlert=this.alertCtrl.create({
+             title:"删除商品",
+             subTitle:"是否确认删除这个商品",
+             buttons:[
+               {
+                 text:"删除",
+                 handler:()=>{
+                  var cid=this.cart[i].cid;
+                  var url="http://localhost:3000/deleteCart?cid="+cid;
+                  this.myHttpService.SendGetRequest(url,(result:any)=>{
+                         if(result.code==1){
+                             this.cart.splice(i,1);
+                         }
+                  }) 
+                 }
+               },
+               {
+                 text:"取消",
+                 role:"cancel",
+                 handler:()=>{}
+               }
+             ]
+        });
+        myAlert.present();
     }
 }

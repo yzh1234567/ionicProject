@@ -28,7 +28,7 @@
                         <p  class="detail" >{{item.title}}</p>
                         <p class="other"></p>
                         <div class="count-price">
-                             <span class="price">￥{{item.new_price}}</span>
+                             <span class="price">￥{{item.new_price|number:".2"}}</span>
                              <div class="count" >
                                     <button ion-button color="light" (click)="productCount(i,-1)">-</button>
                                     <span class="count-item2">{{item.count}}</span>
@@ -55,8 +55,8 @@
    </ion-infinite-scroll>
 </ion-content>
 
-<ion-footer *ngIf="cart">
-    <ion-grid>
+<ion-footer>
+    <ion-grid *ngIf="cart">
           <ion-row align-items-center>
                 <ion-col col-2 align-self-center >
                     <div class="allSelect">
@@ -67,10 +67,10 @@
                 </ion-col>
                 <ion-col col-4>
                     <span class="sum">合计:</span>
-                    <span class="sumMoney">￥{{calcSum()}}</span>
+                    <span class="sumMoney">￥{{calcSum()|number:".2"}}</span>
                 </ion-col>
                 <ion-col>
-                    <button ion-button color="danger" full (click)="myPay()">结算</button>
+                    <button ion-button color="danger" full (click)="myPay()" [disabled]="calcSum()<=0">结算</button>
                 </ion-col>
           </ion-row>
     </ion-grid>

@@ -6,10 +6,45 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>pay</ion-title>
+    <ion-title>支付页面</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content >
+       <div class="blank"></div>
+       <ion-grid>
+          <ion-row>
+              <ion-col col-3 text-center>
+                  <button clear color="dark" ion-button (click)="closeModal()">
+                       <ion-icon name="close"></ion-icon>
+                  </button>
+              </ion-col>
+              <ion-col col-6 text-center>
+                 <button clear color="dark" ion-button>
+                     确认付款
+                </button>
+              </ion-col>
+              <ion-col col-3 text-center>
+                 <button clear color="dark" ion-button>
+                     <ion-icon name="help"></ion-icon>
+                </button>
+              </ion-col>
+          </ion-row>
+          <ion-row >
+             <ion-col text-center>￥30.00</ion-col>
+         </ion-row>
+         <ion-row>
+             <ion-col text-left>支付账号</ion-col>
+             <ion-col text-right>1234567</ion-col>
+         </ion-row>
+         <ion-row>
+             <ion-col text-left>付款账号</ion-col>
+             <ion-col text-right>中国银行</ion-col>
+         </ion-row>
+         <ion-row>
+             <ion-col>
+                 <button ion-button color="secondary" large full (click)="myLoading()">确认支付</button>
+             </ion-col>
+         </ion-row>
+       </ion-grid>
 </ion-content>

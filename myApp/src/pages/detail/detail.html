@@ -41,6 +41,29 @@
              </ion-row>
         </ion-grid>
         <div class="blank"></div>
+        <div class="product-price">
+              <span class="price">￥:{{details.new_price|number:".2"}}</span>
+              <div class="more-price">
+                  <span>更多优惠</span>
+                  <ion-icon name="more"></ion-icon>
+              </div>
+        </div>
+        <div class="blank"></div>
+        <div class="product-count">
+            <span>购买数量:</span>
+            <div class="count">
+                 <button ion-button outline small color="danger" (click)="buyCount(-1)" [disabled]="details.count<=1">
+                      <ion-icon name="remove"></ion-icon>
+                 </button>
+                 <button ion-button clear color=danger small>
+                        {{details.count}}
+                 </button>
+                 <button ion-button outline small color="danger" (click)="buyCount(1)" [disabled]="details.count>=99">
+                        <ion-icon name="add"></ion-icon>
+                </button>
+            </div>
+        </div>
+        <div class="blank"></div>
         <div class="product-detail">
             <div class="detail-top">
                 <div class="dt-item dt-item1" >商品介绍</div>
@@ -88,7 +111,7 @@
                   </button>
              </ion-col> 
             <ion-col col-6>
-                <button ion-button full color="danger" >
+                <button ion-button full color="danger" (click)="addCart()">
                      加入购物车
                 </button>
             </ion-col>

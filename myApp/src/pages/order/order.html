@@ -11,5 +11,57 @@
 </ion-header>
 
 <ion-content >
+       <div class="order-top">
+            <div class="user-msg">
+                  <div class="user">
+                       <h4 class="user-item">张三</h4>
+                       <h4 class="user-item"> 133****5618</h4>
+                  </div>
+                  <div class="address">
+                         <ion-icon name="pin"></ion-icon>
+                         <span class="addr-item">重庆市渝北区两路口中华大厦17楼-4</span>
+                  </div>
+            </div> 
+            <div class="order-icon">
+                <ion-icon name="arrow-forward"></ion-icon>
+            </div>
+       </div>
+       <div class="blank"></div>
+       <div class="order-products">
+             <div class="product">
+                   <div class="product-item product-item1">
+                       <img src="http://localhost:3000/img/produc_details/product_details1/small_picture/ps4.jpg" alt="">
+                   </div>
+                   <div class="product-item product-item2">
+                        <p class="detail">新疆板栗南瓜</p>
+                        <div class="price-count">
+                            <span>￥15.00</span>
+                            <span>x1</span>
+                        </div>
+                   </div>
+             </div>
+             <div class="product">
+                <div class="product-item product-item1">
+                    <img src="http://localhost:3000/img/produc_details/product_details1/small_picture/ps3.jpg" alt="">
+                </div>
+                <div class="product-item product-item2">
+                     <p class="detail">新疆板栗南瓜</p>
+                     <div class="price-count">
+                         <span>￥15.00</span>
+                         <span>x1</span>
+                     </div>
+                </div>
+          </div>
+       </div>
+       <div class="blank"></div>
 
 </ion-content>
+<ion-footer>
+       <div class="order-bottom">
+           <span class="order-money">实际付款:￥30.00</span>
+           <button ion-button color="danger" (click)="showPay()">确认订单</button>
+           <!-- <div class="order-submit">
+               <button ion-button color="danger" full>确认订单</button>
+           </div> -->
+       </div>
+</ion-footer>

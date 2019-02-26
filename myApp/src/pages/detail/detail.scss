@@ -51,4 +51,22 @@ page-detail {
      .dt-item+.dt-item{
         border-left:1px solid #ddd;
     }
+    .product-price,.more-price,.product-count,.count{
+        display:flex;
+        align-items: center;
+    }
+    .product-price{
+        padding:6px;
+        justify-content: space-between;
+    }
+    .product-price .price{
+         color:$color;
+    }
+    .product-count{
+        padding:6px;
+        justify-content: flex-start;
+    }
+    .more-price,.count{
+        justify-content: center;
+    }
 }
