@@ -21,9 +21,14 @@ export class OrderPage {
     private modalCtrl:ModalController
     ) {
   }
-
+  order=[];
+  sum=0.00;
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrderPage');
+  }
+  ionViewWillEnter(){
+     this.order=this.navParams.data.order;
+     this.sum=this.navParams.data.sum;
   }
   //  确认订单功能
   showPay(){

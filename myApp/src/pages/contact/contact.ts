@@ -81,7 +81,7 @@ export class ContactPage {
                                   position:"middle",
                             });
                             setTimeout(()=>{
-                                this.navCtrl.push(UserPage);
+                                this.navCtrl.parent.select(3);
                                 myToast.dismiss();
                             },3000)
                             myToast.present();
@@ -119,7 +119,16 @@ export class ContactPage {
     }
     // 结算按钮
     myPay(){
-        this.navCtrl.push(OrderPage);
+        var order=[];
+        var sum=this.calcSum();
+        var cartList=this.cart;
+        for(var i=0;i<cartList.length;i++){
+            if(cartList[i].isSelected){
+                 order.push(cartList[i])
+            }
+        };
+        
+        this.navCtrl.push(OrderPage,{order:order,sum:sum});
     }
     // 修改购买商品的数量
     productCount(i,e){

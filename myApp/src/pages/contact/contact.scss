@@ -33,7 +33,7 @@ page-contact {
         flex-direction: column;
         justify-content: center;
         padding:6px 6px 6px 0;
-        width:66%;
+        width:52%;
     }
     .cart-item .detail{
         margin:0;
@@ -42,7 +42,7 @@ page-contact {
         text-overflow: ellipsis;
         //-webkit-line-clamp:2;只有safari内核扩展的css样式
          white-space: nowrap;
-        
+         width:100%;
     }
     .count-price{
         justify-content: space-between;

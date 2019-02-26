@@ -27,38 +27,26 @@
             </div>
        </div>
        <div class="blank"></div>
-       <div class="order-products">
-             <div class="product">
+       <div class="order-products" *ngIf="order">
+             <div class="product" *ngFor="let item of order;let i=index">
                    <div class="product-item product-item1">
-                       <img src="http://localhost:3000/img/produc_details/product_details1/small_picture/ps4.jpg" alt="">
+                       <img [src]="'http://localhost:3000/'+item.img_src" alt="">
                    </div>
                    <div class="product-item product-item2">
-                        <p class="detail">新疆板栗南瓜</p>
+                        <p class="detail">{{item.title}}</p>
                         <div class="price-count">
-                            <span>￥15.00</span>
-                            <span>x1</span>
+                            <span>￥{{item.new_price|number:".2"}}</span>
+                            <span>x{{item.count}}</span>
                         </div>
                    </div>
              </div>
-             <div class="product">
-                <div class="product-item product-item1">
-                    <img src="http://localhost:3000/img/produc_details/product_details1/small_picture/ps3.jpg" alt="">
-                </div>
-                <div class="product-item product-item2">
-                     <p class="detail">新疆板栗南瓜</p>
-                     <div class="price-count">
-                         <span>￥15.00</span>
-                         <span>x1</span>
-                     </div>
-                </div>
-          </div>
        </div>
        <div class="blank"></div>
 
 </ion-content>
 <ion-footer>
        <div class="order-bottom">
-           <span class="order-money">实际付款:￥30.00</span>
+           <span class="order-money">实际付款:￥{{sum|number:".2"}}</span>
            <button ion-button color="danger" (click)="showPay()">确认订单</button>
            <!-- <div class="order-submit">
                <button ion-button color="danger" full>确认订单</button>
