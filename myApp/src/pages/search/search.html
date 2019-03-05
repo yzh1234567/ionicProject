@@ -6,10 +6,13 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-searchbar placeholder="搜索商品"></ion-searchbar>
+    <ion-searchbar placeholder="搜索商品" (ionInput)="search()" [(ngModel)]="kwords"></ion-searchbar>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content >
+     <div class="blank"></div>
+      <div class="search-content" *ngIf="kwordList">
+           <div class="content" *ngFor="let item of kwordList;let i=index">{{item}}</div>
+      </div>
 </ion-content>

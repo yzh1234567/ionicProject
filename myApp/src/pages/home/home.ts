@@ -25,7 +25,7 @@ export class HomePage {
   }
   // 向后台发送get请求
     getRequest(){
-      var url="http://localhost:3000/index";
+      var url="http://superlove.applinzi.com/index";
       this.myHttpService.SendGetRequest(url,(result)=>{
               if(result.code==200){
                 this.mySlides=result.data.adData;

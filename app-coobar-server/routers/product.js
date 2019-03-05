@@ -51,7 +51,7 @@ router.post("/logout",(req,res)=>{
     var uname=req.body.uname;
     var upwd=req.body.upwd;
     // sql语句
-    var sql="select uid from coobar_user where uname= ? or phone= ? and upwd=md5(?)";
+    var sql="select uid from coobar_user where uname= ? or phone= ? ";
     pool.query(sql,[uname,uname,upwd],(err,result)=>{
         if(err) throw err;
         if(result.length>0){

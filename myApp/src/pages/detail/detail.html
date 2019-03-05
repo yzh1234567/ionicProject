@@ -22,7 +22,7 @@
     <div class="product" *ngIf="myShow[0].show">
           <ion-slides pager loop  *ngIf="detailData" class="mySlides">
               <ion-slide *ngFor="let item of detailData.pics">
-                   <img [src]="'http://localhost:3000/'+item.img_md" alt="">
+                   <img [src]="'http://superlove.applinzi.com/'+item.img_md" alt="">
               </ion-slide>
           </ion-slides>
           <ion-grid>
@@ -70,7 +70,7 @@
                 <div class="dt-item">规格参数</div>
                 <div class="dt-item">售后保障</div>
             </div>
-             <img src="http://localhost:3000/img/produc_details/product_details1/long-picture/20180914061402870.jpg" alt="">    
+             <img src="http://superlove.applinzi.com/img/produc_details/product_details1/long-picture/20180914061402870.jpg" alt="">    
            </div>
     </div>
     <div class="product-detail" *ngIf="myShow[1].show">
@@ -79,7 +79,7 @@
          <div class="dt-item">规格参数</div>
          <div class="dt-item">售后保障</div>
      </div>
-      <img src="http://localhost:3000/img/produc_details/product_details1/long-picture/20180914061402870.jpg" alt="">    
+      <img src="http://superlove.applinzi.com/img/produc_details/product_details1/long-picture/20180914061402870.jpg" alt="">    
     </div>
     <div class="comment" *ngIf="myShow[2].show">
          <div>
@@ -106,7 +106,7 @@
                   </button>
              </ion-col>
               <ion-col col-2>
-                  <button ion-button clear color="dark" full [navPush]="cart">
+                  <button ion-button clear color="dark" full (click)="queryCart()">
                       <ion-icon name="cart"></ion-icon>
                   </button>
              </ion-col> 

@@ -12,7 +12,7 @@ export class ContactPage {
   pageCount=1; //默认购物车至少有一页数据
   pno=1;       //查询第一页数据
   pageSize=5;  //每一页显示五条数据
-  url="http://localhost:3000/queryCart";
+  url="http://superlove.applinzi.com/queryCart";
   cart=[];
   isAllSelected=false;
   constructor(public navCtrl: NavController,
@@ -140,7 +140,7 @@ export class ContactPage {
         };
         var count=this.cart[i].count;
         var cid=this.cart[i].cid;
-        var url="http://localhost:3000/updateCart?count="+count+"&cid="+cid;
+        var url="http://superlove.applinzi.com/updateCart?count="+count+"&cid="+cid;
         this.myHttpService.SendGetRequest(url,(result:any)=>{
            
         })
@@ -155,7 +155,7 @@ export class ContactPage {
                  text:"删除",
                  handler:()=>{
                   var cid=this.cart[i].cid;
-                  var url="http://localhost:3000/deleteCart?cid="+cid;
+                  var url="http://superlove.applinzi.com/deleteCart?cid="+cid;
                   this.myHttpService.SendGetRequest(url,(result:any)=>{
                          if(result.code==1){
                              this.cart.splice(i,1);

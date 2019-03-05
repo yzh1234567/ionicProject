@@ -11,8 +11,8 @@
 </ion-header>
 
 <ion-content >
-        <div class="login" *ngIf="isLogin==false" padding>
-            <img src="http://localhost:3000/img/index-header/logo.jpg" alt="" class="user-avatar">
+        <div class="login" *ngIf="isLogin==0" padding>
+            <img src="http://superlove.applinzi.com/img/index-header/logo.jpg" alt="" class="user-avatar">
             <ion-item>
                 <ion-label color="dark">账号:</ion-label>
                 <ion-input placeholder="用户名/手机号码" [(ngModel)]="uname"></ion-input>
@@ -33,41 +33,41 @@
             </ion-grid>
               <button ion-button color="danger" full  (click)="login()">登陆</button>
         </div>
-        <div class="user-msg"  *ngIf="isLogin">
+        <div class="user-msg"  *ngIf="isLogin==1">
             <ion-list>
                 <ion-item>
                     <ion-avatar item-start>
-                          <img src="http://localhost:3000/img/index-header/logo.jpg" alt="">
+                          <img src="http://superlove.applinzi.com/img/index-header/logo.jpg" alt="">
                     </ion-avatar>
-                    <p>一条金鱼</p>
+                    <p>{{uname}}</p>
                     <ion-icon name="arrow-forward" item-end></ion-icon>
                 </ion-item>
             </ion-list>
             <div class="my-list">
                 <div class="order-pay">
-                    <img src="http://localhost:3000/img/icon/待付款.png" alt="">
+                    <img src="http://superlove.applinzi.com/img/icon/待付款.png" alt="">
                      <span>待付款</span>
                 </div>
                 <div class="order-pay">
-                    <img src="http://localhost:3000/img/icon/待收货.png" alt="">
+                    <img src="http://superlove.applinzi.com/img/icon/待收货.png" alt="">
                     <span>待收货</span>
                 </div>
                 <div class="order-pay">
-                    <img src="http://localhost:3000/img/icon/待评价.png" alt="">
+                    <img src="http://superlove.applinzi.com/img/icon/待评价.png" alt="">
                     <span>待评价</span>
                 </div>
                 <div class="order-pay">
-                    <img src="http://localhost:3000/img/icon/退换货.png" alt="">
+                    <img src="http://superlove.applinzi.com/img/icon/退换货.png" alt="">
                     <span>退换货</span>
                 </div>
                 <div class="order-pay">
-                    <img src="http://localhost:3000/img/icon/我的订单.png" alt="">
+                    <img src="http://superlove.applinzi.com/img/icon/我的订单.png" alt="">
                     <span>我的订单</span>
                 </div> 
             </div>
             <ion-list>
                 <ion-item>
-                      <img src="http://localhost:3000/img/icon/我的钱包.png" alt="" item-start>
+                      <img src="http://superlove.applinzi.com/img/icon/我的钱包.png" alt="" item-start>
                      <span item-start>我的钱包</span>
                      <ion-icon name="arrow-forward" item-end></ion-icon>
                 </ion-item>

@@ -6,7 +6,7 @@ const session=require("express-session");
 const productRouter=require("./routers/product.js");
 // 创建服务器
 var app=express();
-    app.listen(3000);
+    app.listen(5050);
 // 使用第三方模块
 app.use(express.static("public"));
 app.use(bodyParser.json());

@@ -1,10 +1,10 @@
 const mysql=require("mysql");
 var pool=mysql.createPool({
-     host:"localhost",
+     host:"w.rdc.sae.sina.com.cn",
      port:3306,
-     user:"root",
-     password:"",
-     database:"coobar",
+     user:"ymwojojm2x",
+     password:"**********",
+     database:"app_superlove",
      connectionLimit:20,
 });
 module.exports=pool;

@@ -14,7 +14,7 @@
     <ion-row align-items-center>
         <ion-col col-2>
             <button ion-button color="dark" clear full>
-               <img src="http://localhost:3000/img/icon/照片.png" alt="">
+               <img src="http://superlove.applinzi.com/img/icon/照片.png" alt="">
             </button>
         </ion-col>
         <ion-col col-8>
@@ -22,14 +22,14 @@
         </ion-col>
         <ion-col col-2>
             <button ion-button color="dark" clear full>
-              <img src="http://localhost:3000/img/icon/消息.png" alt="">
+              <img src="http://superlove.applinzi.com/img/icon/消息.png" alt="">
             </button>
         </ion-col>
     </ion-row>
 </ion-grid>
-<ion-slides *ngIf="mySlides" autoplay=3000 pager loop>
+<ion-slides *ngIf="mySlides"  pager loop>
      <ion-slide *ngFor="let item of mySlides;let i=index">
-          <img [src]="'http://localhost:3000/'+item.img" alt="">
+          <img [src]="'http://superlove.applinzi.com/'+item.img" alt="">
      </ion-slide>
 </ion-slides>
 <ion-grid>
@@ -37,7 +37,7 @@
          <ion-col >
            <ion-card >
               <div class="grid-item" [navPush]="search">
-                  <img src="http://localhost:3000/img/icon/搜索.png" alt="">
+                  <img src="http://superlove.applinzi.com/img/icon/搜索.png" alt="">
                   <p class="gItem">搜索</p>
               </div>
            </ion-card>
@@ -45,7 +45,7 @@
          <ion-col >
            <ion-card>
               <div class="grid-item">
-                  <img src="http://localhost:3000/img/icon/蔬菜.png" alt="">
+                  <img src="http://superlove.applinzi.com/img/icon/蔬菜.png" alt="">
                   <p class="gItem">蔬菜</p> 
               </div>
            </ion-card>
@@ -53,7 +53,7 @@
          <ion-col >
             <ion-card>
                 <div class="grid-item">
-                    <img src="http://localhost:3000/img/icon/水果.png" alt="">
+                    <img src="http://superlove.applinzi.com/img/icon/水果.png" alt="">
                     <p class="gItem">水果</p> 
                 </div>
             </ion-card>
@@ -63,7 +63,7 @@
         <ion-col >
            <ion-card>
               <div class="grid-item">
-                  <img src="http://localhost:3000/img/icon/超市.png" alt="">
+                  <img src="http://superlove.applinzi.com/img/icon/超市.png" alt="">
                   <p class="gItem">超市</p>
               </div>
            </ion-card>
@@ -71,7 +71,7 @@
         <ion-col >
            <ion-card>
                 <div class="grid-item"> 
-                    <img src="http://localhost:3000/img/icon/优惠券.png" alt="">
+                    <img src="http://superlove.applinzi.com/img/icon/优惠券.png" alt="">
                     <p class="gItem">优惠券</p> 
                 </div>
            </ion-card>
@@ -79,7 +79,7 @@
         <ion-col >
             <ion-card>
                 <div class="grid-item"> 
-                        <img src="http://localhost:3000/img/icon/更多.png" alt="">
+                        <img src="http://superlove.applinzi.com/img/icon/更多.png" alt="">
                     <p class="gItem">更多</p> 
                 </div>
            </ion-card>
@@ -88,23 +88,23 @@
 </ion-grid>
 <!-- <ul class="grid">
     <li class="grid-item">
-        <img src="http://localhost:3000/img/icon/搜索.png" alt="">
+        <img src="http://superlove.applinzi.com/img/icon/搜索.png" alt="">
         <p class="gItem">搜索</p>
     </li>
     <li class="grid-item">
-        <img src="http://localhost:3000/img/icon/蔬菜.png" alt="">
+        <img src="http://superlove.applinzi.com/img/icon/蔬菜.png" alt="">
         <p class="gItem">蔬菜</p>
     </li>
     <li class="grid-item">
-      <img src="http://localhost:3000/img/icon/水果.png" alt="">
+      <img src="http://superlove.applinzi.com/img/icon/水果.png" alt="">
       <p class="gItem">水果</p>
     </li>
     <li class="grid-item">
-      <img src="http://localhost:3000/img/icon/超市.png" alt="">
+      <img src="http://superlove.applinzi.com/img/icon/超市.png" alt="">
       <p class="gItem">超市</p>
     </li>
     <li class="grid-item">
-      <img src="http://localhost:3000/img/icon/优惠券.png" alt="">
+      <img src="http://superlove.applinzi.com/img/icon/优惠券.png" alt="">
       <p class="gItem">优惠券</p>
     </li>
     <li class="grid-item">
@@ -118,7 +118,7 @@
       <div class="products">
            <div class="product" *ngFor="let item of myF1Data;let i=index">
                 <div class="product-item" [navPush]="detail" [navParams]="{pid:item.pid}">
-                    <img [src]="'http://localhost:3000/'+item.img_src" alt="">
+                    <img [src]="'http://superlove.applinzi.com/'+item.img_src" alt="">
                     <p class="detail">{{item.title}}</p>
                     <p class="price">
                         <span class="new_price">￥{{item.new_price|number:".2"}}</span>
@@ -133,12 +133,12 @@
           热情水果
     </div>
     <ion-list>
-         <ion-item *ngFor="let tmp of myF2Data;let i=index" [navPush]="detail" [navParams]="{pid:tmp.pid}">
+         <ion-item *ngFor="let tmp of myF2Data;let i=index" >
             <ion-thumbnail item-start [navPush]="detail" [navParams]="{pid:tmp.pid}">
-                <img [src]="'http://localhost:3000/'+tmp.img_src" alt="">
+                <img [src]="'http://superlove.applinzi.com/'+tmp.img_src" alt="">
             </ion-thumbnail>
             <div class="product-item">
-                <p class="detail">{{tmp.title}}</p>
+                <p class="detail" [navPush]="detail" [navParams]="{pid:tmp.pid}">{{tmp.title}}</p>
                 <p class="price">
                     <span class="new_price">￥{{tmp.new_price|number:".2"}}</span>
                 </p>

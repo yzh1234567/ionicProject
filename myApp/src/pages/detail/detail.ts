@@ -19,7 +19,7 @@ import { MyHttpServiceProvider } from '../../providers/my-http-service/my-http-s
 })
 export class DetailPage {
   cart=ContactPage; 
-  url="http://localhost:3000/productDetail";
+  url="http://superlove.applinzi.com/productDetail";
   detailData=[];
   details={};
   myShow=[
@@ -56,6 +56,7 @@ export class DetailPage {
   ];
   myHeart="attention";
   pid=1;
+  isLogin=0;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private myHttpService:MyHttpServiceProvider,
     private actionSheetCtrl:ActionSheetController,
@@ -64,7 +65,12 @@ export class DetailPage {
   }
 
   ionViewDidLoad() {
-      this.pid=this.navParams.data.pid ;
+      this.isLogin=sessionStorage["isLogin"];
+      if(this.isLogin){
+          
+      }else{
+        this.isLogin=0;
+      }
   }
   ionViewWillEnter(){
       this.getRequest(this.url);
@@ -131,30 +137,51 @@ export class DetailPage {
   }
   // 添加购物车
    addCart(){
-      var count= this.details["count"];
-      var url="http://localhost:3000/addCart?pid="+this.pid+"&count="+count;
-      this.myHttpService.SendGetRequest(url,(result:any)=>{
-            if(result.code==1){
-                    var myToast=this.toastCtrl.create({
-                          message:result.msg,
-                          duration:2000,
-                          cssClass:"background-color: #f00"
-                    });
-                    myToast.present();
-            }else if(result.code==-1){
-              var myToast=this.toastCtrl.create({
-                message:result.msg,
-                duration:2000,
-                cssClass:"background-color:#f00 "
-                });
-                myToast.present();
-            }
-      })
-   }
+          var count= this.details["count"];
+          var url="http://superlove.applinzi.com/addCart?pid="+this.pid+"&count="+count;
+          if(this.isLogin){
+                  this.myHttpService.SendGetRequest(url,(result:any)=>{
+                    if(result.code==1){
+                            var myToast=this.toastCtrl.create({
+                                  message:result.msg,
+                                  duration:2000,
+                            });
+                            myToast.present();
+                    }else if(result.code==-1){
+                      var myToast=this.toastCtrl.create({
+                        message:result.msg,
+                        duration:2000,
+                        cssClass:"myToast"
+                        });
+                        myToast.present();
+                      } 
+                  })
+          }else{
+                var myToast=this.toastCtrl.create({
+                  message:"请先登录",
+                  duration:2000,
+                  cssClass:"myToast"
+                  });
+                  myToast.present(); 
+          }
+    }    
   //  购买商品的数量
     buyCount(e){
        var count=parseInt(this.details["count"]);
        count+=e;
        this.details["count"]=count;
+    }
+  // 查看购物车详情
+    queryCart(){
+        if(this.isLogin){
+           this.navCtrl.push(ContactPage);
+        }else{
+          var myToast=this.toastCtrl.create({
+            message:"请先登录",
+            duration:2000,
+            cssClass:"myToast"
+            });
+            myToast.present(); 
+        }
     }
 }

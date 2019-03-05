@@ -29,7 +29,7 @@ export class RegisterPage {
  testUpwd=false;
  testUpwd1=false;
  myTime=3;
- url="http://localhost:3000/register";
+ url="http://superlove.applinzi.com/register";
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private myHttpService:MyHttpServiceProvider,
     private toastCtrl:ToastController,

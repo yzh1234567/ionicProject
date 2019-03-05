@@ -19,11 +19,11 @@ import {RegisterPage} from "../register/register";
 })
 export class UserPage {
   register=RegisterPage;
-  isLogin=false;
+  isLogin=0;
   uname="";
   upwd="";
-  url="http://localhost:3000/login";
-  url1="http://localhost:3000/logout";
+  url="http://superlove.applinzi.com/login";
+  url1="http://superlove.applinzi.com/logout";
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private myHttpService:MyHttpServiceProvider,
     private toastCtl:ToastController,
@@ -31,23 +31,32 @@ export class UserPage {
   }
 
   ionViewDidLoad() {
+   
     console.log('ionViewDidLoad UserPage');
   }
-  
+  ionViewWillEnter(){
+        this.isLogin=sessionStorage["isLogin"];
+        if(!this.isLogin){
+          this.isLogin=0; 
+        }
+        this.uname=sessionStorage["uname"];
+  }
   //登陆功能
   login(){
-      this.postRequest(this.url,{uname:this.uname,upwd:this.upwd},true);
+      this.postRequest(this.url,{uname:this.uname,upwd:this.upwd},1,this.upwd);
   }
   // 退出登陆
   logout(){
-      this.postRequest(this.url1,{uname:this.uname,upwd:this.upwd},false);
+      this.postRequest(this.url1,{uname:this.uname},0,"");
   }
   // 发送post请求
-  postRequest(url,params,str){
+  postRequest(url,params,num,str){
       this.myHttpService.SendPostRequest(url,params,(result)=>{
             if(result.code==1){
-                  this.isLogin=str;
-                  this.upwd="";
+                  this.isLogin=num;
+                  this.upwd=str;
+                  sessionStorage.setItem("isLogin",num);
+                  sessionStorage.setItem("uname",this.uname);
             }else{
                 var myToast= this.toastCtl.create({
                       message:result.msg,
