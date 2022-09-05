@@ -15,6 +15,7 @@ export class HomePage {
   myF2Data=[];
   detail=DetailPage;
   search=SearchPage;
+  
   constructor(public navCtrl: NavController,
     private myHttpService :MyHttpServiceProvider
     ) {
